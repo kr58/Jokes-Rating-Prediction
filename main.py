@@ -6,7 +6,6 @@ from Scripts.load_data import load_ratings, read_data
 
 from Models.nnmf import NNMF
 from Models.mf import MF
-from Models.nrr import NRR
 from Models.autorec import IAutoRec, UAutoRec
 
 def parse_args(choices):
@@ -16,7 +15,7 @@ def parse_args(choices):
 
 if __name__ == '__main__':
 
-	choices = ['MF', 'NNMF', 'NRR', 'I-AutoRec', 'U-AutoRec', 'VAE']
+	choices = ['MF', 'NNMF', 'I-AutoRec', 'U-AutoRec', 'VAE']
 	learning_rate = 1e-3
 	batch_size = 256
 
@@ -34,8 +33,6 @@ if __name__ == '__main__':
 				model = MF(sess, n_user, n_item, batch_size=batch_size)
 			if args.model == "NNMF":
 				model = NNMF(sess, n_user, n_item, learning_rate=learning_rate)
-			if args.model == "NRR":
-				model = NRR(sess, n_user, n_item)
 			if args.model == "I-AutoRec":
 				model = IAutoRec(sess, n_user, n_item)
 			if args.model == "U-AutoRec":
